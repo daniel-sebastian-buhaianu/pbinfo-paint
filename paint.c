@@ -26,10 +26,10 @@ int main()
 	for (v = i = 0; i < m; i++) {
 		fscanf(fin, "%u %u", &d, &lg);
 
-		if (!(0 <= d && d < lg && lg < n)) {
+		/*if (!(0 <= d && d < lg && lg < n)) {
 			printf("Eroare valoare d[%u], lg[%u]\n", i, i);
 			return 5;
-		}
+		}*/
 
 		for (j = d, l = 0; l < lg && j < n; j++, l++) {
 			z[j]++;
@@ -50,4 +50,4 @@ int main()
 
 	return 0;
 }
-// scor 5/100
+// scor 40
