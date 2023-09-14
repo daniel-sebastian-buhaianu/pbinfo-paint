@@ -7,7 +7,7 @@
 
 int main()
 {
-	unsigned n, k, m, i, d, lg, j, l, *z, v;
+	unsigned n, k, m, i, d, lg, *z, nr, s;
 
 	FILE *fin = fopen("paint.in", "r");
 
@@ -23,31 +23,30 @@ int main()
 
 	z = (unsigned*)calloc(n, sizeof(unsigned));
 
-	for (v = i = 0; i < m; i++) {
+	for (i = 0; i < m; i++) {
 		fscanf(fin, "%u %u", &d, &lg);
 
-		/*if (!(0 <= d && d < lg && lg < n)) {
-			printf("Eroare valoare d[%u], lg[%u]\n", i, i);
-			return 5;
-		}*/
+		z[d]++;
 
-		for (j = d, l = 0; l < lg && j < n; j++, l++) {
-			z[j]++;
-			
-			if(z[j] == k) v++;
-		}
+		if (d+lg < n) z[d+lg]--;
+	}
+
+	fclose(fin);
+
+	for (nr = s = i = 0; i < n; i++) {
+		s += z[i];
+		
+		if (s < k) nr++;
 	}
 
 	free(z);
 
-	fclose(fin);
-	
 	FILE *fout = fopen("paint.out", "w");
 
-	fprintf(fout, "%u", n-v);
+	fprintf(fout, "%u", nr);
 
 	fclose(fout);
 
 	return 0;
 }
-// scor 40
+// scor 100
