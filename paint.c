@@ -23,6 +23,8 @@ int main()
 
 	z = (unsigned*)calloc(n, sizeof(unsigned));
 
+	if (!z) { printf("Eroare alocare memorie\n"); return 5; }
+
 	for (i = 0; i < m; i++) {
 		fscanf(fin, "%u %u", &d, &lg);
 
